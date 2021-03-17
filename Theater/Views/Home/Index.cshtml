@@ -1,0 +1,42 @@
+﻿@model ICollection<Theater.Models.Dashboard.ViewModels.PlayViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <label>Menu:</label>
+            <br />
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Repertoar</a>
+        </div>
+
+        <div class="col-md-6">
+            <div class="row float-lg-right">
+                @Html.ActionLink("Create new play", "Create", "Play")
+            </div>
+            <br />
+            <div class="row  overflow-auto position-absolute">
+                @foreach (var play in Model)
+                {
+                    <div class="col mt-2">
+                        <div class="card">
+                            <div class="card-body border">
+                                <h5 class="card-title  ">@play.Title</h5>
+                                <img class="card-img-top  overflow-auto" src="data:image/jpeg;base64,@Convert.ToBase64String(play.Image)" alt="@play.Title  + image">
+                                <p class="card-text  overflow-auto">@play.Description</p>
+                                <div class="card-footer  overflow-auto">
+                                    @Html.ActionLink("Open", "Index", "Play", new { id = play.Id })
+                                    @Html.ActionLink("Edit", "Edit", "Play", new { id = play.Id })
+                                    @Html.ActionLink("Delete", "Delete", "Play", new { id = play.Id })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>

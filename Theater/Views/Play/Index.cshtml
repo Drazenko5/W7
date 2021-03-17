@@ -1,0 +1,26 @@
+﻿@model Theater.Models.Dashboard.ViewModels.PlayViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+    <div class="container">
+        <h1>@Model.Title</h1>
+
+        <img class="card-img-top" src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Image)" alt="@Model.Title  + image">
+
+        <p>Description: @Model.Description</p>
+
+        <p>Schedule time: @Model.ScheduleTime</p>
+
+
+        <div class="row">
+            <p>Actors: </p>
+            @foreach (var actor in Model.Actors)
+            {
+                <p> @string.Format("{0} {1}, ", actor.FirstName, actor.LastName)</p>
+            }
+        </div>
+    </div>
+
+
+
+
