@@ -1,0 +1,40 @@
+﻿@model Theater.Models.Dashboard.ViewModels.CreatePlayViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <h1>Create</h1>
+    <form method="post" asp-controller="Play" asp-action="Create" name="CreatePlayForm" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="form-group">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" type="text" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" type="textarea" class="form-control"> </textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Actors" class="control-label"></label>
+            <select asp-for="Actors"  multiple="multiple" asp-items="@ViewBag.Actors"></select>
+            <span asp-validation-for="ImageFile" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ImageFile" class="control-label"></label>
+            <input name="ImageFile" asp-for="ImageFile" required />
+            <span asp-validation-for="ImageFile" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ScheduleTime" class="control-label"></label>
+            <input type="date" name="ScheduleTime" asp-for="ScheduleTime" required />
+            <span asp-validation-for="ScheduleTime" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+
+    </form>
+</div>
